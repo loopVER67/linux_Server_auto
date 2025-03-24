@@ -27,3 +27,5 @@ done
 
 echo "install ido-pgsql"
 apt install icinga2-ido-pgsql
+
+
