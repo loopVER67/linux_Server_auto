@@ -6,7 +6,7 @@ OUT_INT='ens18'
 apt upgrade && update -y
 
 # install all required package
-apt install curl net-tools haproxy bind9 ufw open-y
+apt install curl net-tools haproxy bind9 ufw openssh-server openssh-client chrony
 echo "adding dns server address"
 
 NS=(
@@ -30,7 +30,11 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 echo "memulai nat"
 iptables -t nat -A POSTROUTING -o $OUT_INT -j MASQUERADE
 echo 'menyimpan file konfigurasi'
-sudo sh -c “iptables-save > /etc/iptables.rules”
+
+
+
+
+
 
 
 
