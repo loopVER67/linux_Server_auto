@@ -12,6 +12,6 @@ ldif_content=$(cat <<EOF
   dn: ou=Misc,dc=lksjogja8,dc=lan
   objectClass: organizationalUnit
   ou: Misc
-EOF >> ou.ldif)
+EOF)
 
 "$ldif_content" >> $ldiffile
