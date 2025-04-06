@@ -1,4 +1,4 @@
-apt install php apache2 unzip php-mysqli libapazhe2-mod-php -y
+apt install php apache2 unzip php-mysqli libapache2-mod-php -y
 a2enmod /etc/apache2/mods-available/php8.3
 cd /var/www/html
 wget https://files.phpmyadmin.net/phpMyAdmin/5.2.2/phpMyAdmin-5.2.2-all-languages.zip
