@@ -6,7 +6,7 @@ OUT_INT='ens18'
 apt upgrade && update -y
 
 # install all required package
-apt install curl net-tools haproxy bind9 ufw openssh-server openssh-client chrony
+apt install curl net-tools haproxy bind9 ufw chrony
 echo "adding dns server address"
 
 NS=(
