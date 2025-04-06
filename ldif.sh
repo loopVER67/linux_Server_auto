@@ -1,6 +1,6 @@
 #!/bin/bash
-
-cat <<EOF 
+ldiffile="ou.ldif"
+ldif_content=$(cat <<EOF 
   dn: ou=VPN,dc=lksjogja8,dc=lan
   objectClass: organizationalUnit
   ou: VPN
@@ -12,4 +12,6 @@ cat <<EOF
   dn: ou=Misc,dc=lksjogja8,dc=lan
   objectClass: organizationalUnit
   ou: Misc
-EOF > ou.ldif
+EOF > ou.ldif)
+
+"$ldif_content" >> $ldiffile
