@@ -31,10 +31,8 @@ echo "memulai nat"
 iptables -t nat -A POSTROUTING -o $OUT_INT -j MASQUERADE
 echo 'menyimpan file konfigurasi'
 
-
-
-
-
+cp /etc/bind/db.local /etc/bind/lksjogja.lan
+cp /etc/bind/db.127 /etc/bind/reverse
 
 
 
