@@ -1,5 +1,5 @@
 sudo apt update
-sudo apt install dovecot postfix samba -y
+sudo apt install dovecot-imapd postfix samba -y
 cd /etc/samba
 
 share_content=$(cat <<EOF
