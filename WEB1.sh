@@ -1,11 +1,11 @@
 sudo apt update
 sudo apt install dovecot-imapd postfix samba -y
 cd /etc/samba
-
+mkdir /home/web1/sharing
 share_content=$(cat <<EOF
 [share]
 comment = Public Folder
-path = /home/lnx_server/sharing
+path = /home/web1/sharing
 valid users = samba1, lnx_server
 writable = yes
 read only = no
