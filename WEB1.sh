@@ -1,7 +1,21 @@
-sudo apt update && sudo apt install apache2 openssh-server openssh-client dovecot postfix roundcub -y
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu focal stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-apt-cache policy docker-ce
-sudo apt install docker-ce
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+sudo apt update
+sudo apt install dovecot postfix samba -y
+cd /etc/samba
+
+share_content=$(cat <<EOF
+  [share]
+   comment = Public Folder
+   path = /home/lnx_server/sharing
+   valid users = samba1, lnx_server
+   writable = yes
+   read only = no
+   #guest ok = yes
+   #guest only = no
+   browseable = yes
+   create mask = 0755
+   directory mask = 0755
+   #force create mode = 775
+   #force directory mode = 775
+
+)
+echo '$share_content' >> smb.conf
