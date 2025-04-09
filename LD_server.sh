@@ -7,24 +7,6 @@ apt upgrade && update -y
 
 # install all required package
 apt install curl net-tools haproxy bind9 ufw chrony
-echo "adding dns server address"
-
-NS=(
-"175.15.#.1"
-"175.15.#.3"
-"8.8.8.8"
-)
-sed -i '/servername d/' /etc/resolv.conf
-for name in "${NS[@]}"
-do
-  echo "nameserver $name" >> /etc/resolv.conf
-done
-for name in "${NS[@]}"
-do
-  echo "- $name"
-done
-####################NAT##########################
-# activate the nat
 echo > "start nat"
 echo 1 > /proc/sys/net/ipv4/ip_forward
 echo "memulai nat"
@@ -33,7 +15,16 @@ echo 'menyimpan file konfigurasi'
 
 cp /etc/bind/db.local /etc/bind/lksjogja.lan
 cp /etc/bind/db.127 /etc/bind/reverse
+cd /etc/bind
+zone_content=$(cat <<EOF
+zone "" {
+  type master;
+};
+zone "" {
+  type master;
+};
 
-
-
+EOF
+)
+echo $zone_content >> named.conf.local
 
